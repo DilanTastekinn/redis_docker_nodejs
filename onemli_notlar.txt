@@ -1,0 +1,55 @@
+$docker rm node-app -f
+$docker build -t node-app-image .
+$docker run -v $(pwd):/app -p 3000:3000 -d --name node-app node-app-image || $docker run -v $(pwd):/app -v /app/node_modules -p 3000:3000 -d --name node-app node-app-image
+|| $docker run -v $(pwd):/app -v /app/node_modules --env PORT=4000 -p 3000:4000 -d --name node-app node-app-image
+
+$docker exec -it node-app bash 
+$printenv
+
+$docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+$docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
+
+**mongodb yükleyip docker içine koymak istediğimde**
+
+$wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add -
+
+$echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+$deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse
+$apt-get update
+$apt-get install -y mongodb-mongosh
+$docker exec -it 228f32195ee5 bash 
+$mongosh "mongodb://Dilan:dilan123@localhost:27017/admin?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000"
+$docker-compose up
+
+
+$docker exec -it redis_mongo_docker_mongo_1 bash || docker exec -it redis_mongo_docker_mongo_1 mongosh -u "Dilan" -p "dilan123" 
+$mongosh
+$use admin
+$db.auth("Dilan",passwordPrompt())
+$show dbs
+
+docker container prune || docker volume prune kullanılmayanları kaldırmak için kullanılır.
+
+
+
+
+mongoose u indirmek istediğimde Error: EACCES: permission denied hatası aldım.Sebebi kullanıcı yetkisinin root da olması bunu düzeltmek için
+$ npm install -g --unsafe-perm=true --allow-root
+$ sudo chown -R dilan /home/dilan/
+$ sudo chmod -R 777 /home/dilan/Desktop/redis_mongo_docker/node_modules 
+$ npm install mongoose 
+$docker logs redis_mongo_docker_mongo_1 -f => mongoose kurduktan sonra connect olmak için kullanıyoruz.
+
+
+docker inspect <dockernames>
+
+
+PİNK ATMAK İSTEDİĞİMİZDE 
+$docker exec -it redis_mongo_docker_node-app_1 bash
+$ping mongo
+
+YENİ BİR PAKET EKLEDİKTEN SONRA 
+$docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V
+
+
+
