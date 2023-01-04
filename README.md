@@ -106,7 +106,8 @@ postman den de istek atarak işlev kazandığını görüyoruz.
 Nginx kullanarak proxy üzerinden elde ettiğim ıp adresi ile artık web sitesinde yer alıyorum.Bu şekilde güvenli bir dolaşım sağlıyorum. Web sitem içerisinde başka web sitelerine erişim sağlayabilmek adına cors kullanıyoruz.
 Web tarayıcısı tarafından yönetilen ve ek HTTP başlıkları kullanılarak, bir kökende çalışan web uygulamasının, farklı bir kökende yer alan web uygulamasına erişim izni kontrolünü sağlayan mekanizmadır.
 
-Port ile alakalı hata aldığımızda mongosh daki hata
-sudo kill $sudo kill -9 $(sudo lsof -t -i:7101)^Csof -ti:2181)
-sudo kill -9 $(sudo lsof -t -i:3000)
-netstat -tulpn
+_Port ile alakalı hata aldığımızda mongosh daki hata_
+
+    sudo kill $sudo kill -9  $(sudo lsof -t -i:7101)^Csof -ti:2181)
+    sudo kill -9 $(sudo lsof -t -i:3000)
+    netstat -tulpn
